@@ -1,4 +1,4 @@
-import { DIMENSIONS } from '../modules/game/const';
+import { DIMENSIONS } from '../modules/game/types';
 
 export const getNumbersShuffledList = (cardsAmount: number) => {
   const dummyData = Array.from({ length: cardsAmount / 2 }, (_, i) => i + 1);
@@ -13,9 +13,9 @@ export const getCardsAmount = (selectedDimensions: DIMENSIONS) => {
   switch (selectedDimensions) {
     case DIMENSIONS._4X4:
       return 16;
-    case DIMENSIONS._8X8:
-      return 64;
+    case DIMENSIONS._6X6:
+      return 36;
     default:
-      return 169;
+      return 16;
   }
 };

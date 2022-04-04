@@ -1,12 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
-import { DIMENSIONS, GAME_STATUS } from './const';
-
-export interface GameSlice {
-  status: GAME_STATUS;
-  hiddenIds: number[];
-  dimensions: DIMENSIONS;
-}
+import { DIMENSIONS, GameSlice, GAME_STATUS } from './types';
 
 const initialState: GameSlice = {
   hiddenIds: [],
@@ -30,14 +23,19 @@ export const gameSlice = createSlice({
     setDimensions: (state, action: PayloadAction<DIMENSIONS>) => {
       state.dimensions = action.payload;
     },
+    restartGame: (state) => {
+      state.status = GAME_STATUS.PLAYING;
+      state.hiddenIds = [];
+    },
   },
 });
 
-export const { resetHiddenIds, addHiddenId, setGameStatus, setDimensions } =
-  gameSlice.actions;
-
-export const selectHiddenIds = (state: RootState) => state.game.hiddenIds;
-export const selectGameStatus = (state: RootState) => state.game.status;
-export const selectDimensions = (state: RootState) => state.game.dimensions;
+export const {
+  resetHiddenIds,
+  addHiddenId,
+  setGameStatus,
+  setDimensions,
+  restartGame,
+} = gameSlice.actions;
 
 export default gameSlice.reducer;

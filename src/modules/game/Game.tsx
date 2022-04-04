@@ -3,8 +3,8 @@ import { getCardsAmount, getNumbersShuffledList } from '../../utils';
 import { Cards } from './components/Cards/Cards';
 import { Header } from './components/Header/Header';
 import { StartGame } from './components/StartGame/StartGame';
-import { GAME_STATUS } from './const';
-import { selectDimensions, selectGameStatus } from './gameSlice';
+import { selectDimensions, selectGameStatus } from './selectors';
+import { GAME_STATUS } from './types';
 
 export const Game = () => {
   const isPlaying = useSelector(selectGameStatus);

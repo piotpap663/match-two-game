@@ -1,18 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { DIMENSIONS, GAME_STATUS } from '../../const';
-import {
-  selectDimensions,
-  setDimensions,
-  setGameStatus,
-} from '../../gameSlice';
+import { restartGame, setDimensions } from '../../gameSlice';
+import { selectDimensions } from '../../selectors';
+import { DIMENSIONS } from '../../types';
 import { StyledStartGame, Select, Option, Label, Button } from './style';
 
 export const StartGame = () => {
   const dispatch = useDispatch();
+
   const selectedGameDimensions = useSelector(selectDimensions);
 
   const handleStart = () => {
-    dispatch(setGameStatus(GAME_STATUS.PLAYING));
+    dispatch(restartGame());
   };
   const handleOnChange = (e: { target: { value: any } }) => {
     const cards = e.target.value as DIMENSIONS;

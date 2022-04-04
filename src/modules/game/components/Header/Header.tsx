@@ -1,23 +1,24 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useStopwatch } from 'react-timer-hook';
-import { GAME_STATUS } from '../../const';
-import { selectGameStatus } from '../../gameSlice';
+import { selectGameStatus } from '../../selectors';
+import { GAME_STATUS } from '../../types';
 import { StyledHeader, Title } from './style';
 
 export const Header = () => {
-  const isPlaying = useSelector(selectGameStatus);
-
-  const { seconds, minutes, hours, start, pause } = useStopwatch({
+  const { seconds, minutes, hours, pause, reset } = useStopwatch({
     autoStart: false,
   });
 
+  const isPlaying = useSelector(selectGameStatus);
+
   useEffect(() => {
     if (isPlaying === GAME_STATUS.PLAYING) {
-      start();
+      reset();
     } else if (isPlaying === GAME_STATUS.FINISHED) {
       pause();
     }
+    // eslint-disable-next-line
   }, [isPlaying]);
 
   return isPlaying === GAME_STATUS.IDLE ? null : (

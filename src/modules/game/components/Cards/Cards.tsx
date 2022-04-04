@@ -1,12 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GAME_STATUS } from '../../const';
-import {
-  addHiddenId,
-  selectGameStatus,
-  selectHiddenIds,
-  setGameStatus,
-} from '../../gameSlice';
+import { addHiddenId, setGameStatus } from '../../gameSlice';
+import { selectHiddenIds } from '../../selectors';
+import { GAME_STATUS } from '../../types';
 import { Card } from '../Card/Card';
 import { StyledCards } from './style';
 
@@ -15,13 +11,19 @@ interface CardsProps {
   cardsList: number[];
 }
 export const Cards = ({ cardsAmount, cardsList }: CardsProps) => {
-  const [flippedIds, setFlippedIds] = useState<number[]>([]);
+  const dispatch = useDispatch();
 
   const hiddenIds = useSelector(selectHiddenIds);
 
-  const dispatch = useDispatch();
+  const [flippedIds, setFlippedIds] = useState<number[]>([]);
 
   const isFinished = hiddenIds.length === cardsAmount / 2;
+
+  useEffect(() => {
+    if (isFinished) {
+      dispatch(setGameStatus(GAME_STATUS.FINISHED));
+    }
+  }, [isFinished, dispatch]);
 
   const handleClick = (id: number, cardIndex: number) => () => {
     if (flippedIds.includes(cardIndex)) return;
@@ -37,12 +39,6 @@ export const Cards = ({ cardsAmount, cardsList }: CardsProps) => {
     }
   };
 
-  useEffect(() => {
-    if (isFinished) {
-      dispatch(setGameStatus(GAME_STATUS.FINISHED));
-    }
-  }, [isFinished, dispatch]);
-
   return isFinished ? null : (
     <StyledCards cardsAmount={cardsAmount}>
       {cardsList.map((card, cardIdx) => (
@@ -52,6 +48,7 @@ export const Cards = ({ cardsAmount, cardsList }: CardsProps) => {
           onClick={handleClick(card, cardIdx)}
           turnedOff={hiddenIds.includes(card)}
           flipped={flippedIds.includes(cardIdx)}
+          cardsAmount={cardsAmount}
         />
       ))}
     </StyledCards>
