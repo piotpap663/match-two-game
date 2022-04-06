@@ -4,7 +4,7 @@ import { addHiddenId, setGameStatus } from '../../gameSlice';
 import { selectHiddenIds } from '../../selectors';
 import { GAME_STATUS } from '../../types';
 import { Card } from '../Card/Card';
-import { StyledCards } from './style';
+import { CardsWrapper } from './style';
 
 interface CardsProps {
   cardsAmount: number;
@@ -40,7 +40,7 @@ export const Cards = ({ cardsAmount, cardsList }: CardsProps) => {
   };
 
   return isFinished ? null : (
-    <StyledCards cardsAmount={cardsAmount}>
+    <CardsWrapper cardsAmount={cardsAmount}>
       {cardsList.map((card, cardIdx) => (
         <Card
           key={cardIdx}
@@ -51,6 +51,6 @@ export const Cards = ({ cardsAmount, cardsList }: CardsProps) => {
           cardsAmount={cardsAmount}
         />
       ))}
-    </StyledCards>
+    </CardsWrapper>
   );
 };

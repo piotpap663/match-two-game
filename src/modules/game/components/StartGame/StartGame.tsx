@@ -1,8 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { restartGame, setDimensions } from '../../gameSlice';
+import { startGame, setDimensions } from '../../gameSlice';
 import { selectDimensions } from '../../selectors';
 import { DIMENSIONS } from '../../types';
-import { StyledStartGame, Select, Option, Label, Button } from './style';
+import {
+  ButtonContainer,
+  DimensionLabel,
+  DimensionOption,
+  SelectDimension,
+  SelectorContainer,
+  StartButton,
+  StartGameWrapper,
+} from './style';
 
 export const StartGame = () => {
   const dispatch = useDispatch();
@@ -10,7 +18,7 @@ export const StartGame = () => {
   const selectedGameDimensions = useSelector(selectDimensions);
 
   const handleStart = () => {
-    dispatch(restartGame());
+    dispatch(startGame());
   };
   const handleOnChange = (e: { target: { value: any } }) => {
     const cards = e.target.value as DIMENSIONS;
@@ -18,23 +26,25 @@ export const StartGame = () => {
   };
 
   return (
-    <StyledStartGame>
-      <Label htmlFor={'dimensions'}>Choose size:</Label>
-
-      <Select
-        value={selectedGameDimensions}
-        name="dimension"
-        id="dimensions"
-        onChange={handleOnChange}
-      >
-        {Object.values(DIMENSIONS).map((dimension, dimensionIdx) => (
-          <Option key={dimensionIdx} value={dimension}>
-            {dimension}
-          </Option>
-        ))}
-      </Select>
-
-      <Button onClick={handleStart}>Start</Button>
-    </StyledStartGame>
+    <StartGameWrapper data-testid="startgame">
+      <SelectorContainer>
+        <DimensionLabel htmlFor={'dimensions'}>Choose size:</DimensionLabel>
+        <SelectDimension
+          value={selectedGameDimensions}
+          name="dimension"
+          id="dimensions"
+          onChange={handleOnChange}
+        >
+          {Object.values(DIMENSIONS).map((dimension, dimensionIdx) => (
+            <DimensionOption key={dimensionIdx} value={dimension}>
+              {dimension}
+            </DimensionOption>
+          ))}
+        </SelectDimension>
+      </SelectorContainer>
+      <ButtonContainer>
+        <StartButton onClick={handleStart}>Start</StartButton>
+      </ButtonContainer>
+    </StartGameWrapper>
   );
 };

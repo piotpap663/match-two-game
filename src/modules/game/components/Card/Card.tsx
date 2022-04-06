@@ -1,5 +1,5 @@
-import { StyledCard, StyledImg } from './style';
-import emptyImg from '../../../../assets/images/wall.jpg';
+import { CardWrapper, CardImg } from './style';
+import emptyImg from 'assets/images/wall.jpg';
 
 interface CardProps {
   id: number;
@@ -15,15 +15,15 @@ export const Card = ({
   flipped,
   cardsAmount,
 }: CardProps) => (
-  <StyledCard
+  <CardWrapper
     turnedOff={turnedOff}
     onClick={onClick}
     flipped={flipped}
     cardsAmount={cardsAmount}
   >
-    <StyledImg
+    <CardImg
       turnedOff={turnedOff}
-      src={flipped ? require(`../../../../assets/images/${id}.jpg`) : emptyImg}
-    ></StyledImg>
-  </StyledCard>
+      src={flipped ? require(`assets/images/${id}.jpg`) : emptyImg}
+    ></CardImg>
+  </CardWrapper>
 );

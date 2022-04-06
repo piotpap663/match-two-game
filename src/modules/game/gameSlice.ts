@@ -23,8 +23,12 @@ export const gameSlice = createSlice({
     setDimensions: (state, action: PayloadAction<DIMENSIONS>) => {
       state.dimensions = action.payload;
     },
-    restartGame: (state) => {
+    startGame: (state) => {
       state.status = GAME_STATUS.PLAYING;
+      state.hiddenIds = [];
+    },
+    restartGame: (state) => {
+      state.status = GAME_STATUS.IDLE;
       state.hiddenIds = [];
     },
   },
@@ -35,6 +39,7 @@ export const {
   addHiddenId,
   setGameStatus,
   setDimensions,
+  startGame,
   restartGame,
 } = gameSlice.actions;
 

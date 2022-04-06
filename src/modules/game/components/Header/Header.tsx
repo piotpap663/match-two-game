@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useStopwatch } from 'react-timer-hook';
 import { selectGameStatus } from '../../selectors';
 import { GAME_STATUS } from '../../types';
-import { StyledHeader, Title } from './style';
+import { HeaderWrapper, HeaderTitle } from './style';
 
 export const Header = () => {
   const { seconds, minutes, hours, pause, reset } = useStopwatch({
@@ -22,11 +22,13 @@ export const Header = () => {
   }, [isPlaying]);
 
   return isPlaying === GAME_STATUS.IDLE ? null : (
-    <StyledHeader>
-      {isPlaying === GAME_STATUS.FINISHED && <Title>{'Your result: '}</Title>}
+    <HeaderWrapper data-testid="game-header">
+      {isPlaying === GAME_STATUS.FINISHED && (
+        <HeaderTitle>{'Your result: '}</HeaderTitle>
+      )}
       {hours < 10 ? `0${hours}` : hours}:
       {minutes < 10 ? `0${minutes}` : minutes}:
       {seconds < 10 ? `0${seconds}` : seconds}
-    </StyledHeader>
+    </HeaderWrapper>
   );
 };

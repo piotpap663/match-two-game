@@ -1,15 +1,40 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
+import { store } from './store';
 import App from './App';
+import { act } from 'react-dom/test-utils';
 
-test('renders learn react link', () => {
-  const { getByText } = render(
+test('renders menu with links', () => {
+  render(
     <Provider store={store}>
       <App />
     </Provider>
   );
 
-  expect(getByText(/learn/i)).toBeInTheDocument();
+  expect(screen.getByTestId('menu')).toBeInTheDocument();
+  expect(screen.getByTestId('menu-home')).toBeInTheDocument();
+  expect(screen.getByTestId('menu-about')).toBeInTheDocument();
+});
+
+test('renders start game component with links', () => {
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+
+  expect(screen.getByTestId('startgame')).toBeInTheDocument();
+});
+
+test('redirects to about page', () => {
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+  act(() => {
+    screen.getByTestId('menu-about').click();
+  });
+  expect(screen.queryByTestId('startgame')).not.toBeInTheDocument();
+  expect(screen.queryByTestId('about')).toBeInTheDocument();
 });

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 export const CARD_DIMENSION = 200;
 export const CARD_MARGIN = 10;
 
-export const StyledCard = styled.div<{
+export const CardWrapper = styled.div<{
   turnedOff: boolean;
   flipped: boolean;
   cardsAmount: number;
@@ -57,7 +57,7 @@ export const StyledCard = styled.div<{
   }
 `;
 
-export const StyledImg = styled.img<{ turnedOff: boolean }>`
+export const CardImg = styled.img<{ turnedOff: boolean }>`
   width: 100%;
   height: 100%;
   box-shadow: 0px 0px 24px -5px rgba(66, 68, 90, 1);
