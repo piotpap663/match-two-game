@@ -1,12 +1,12 @@
-import React from 'react';
-import './index.css';
-import App from './App';
-import { store } from './store';
-import { Provider } from 'react-redux';
-import * as serviceWorker from './serviceWorker';
-import { createRoot } from 'react-dom/client';
+import React from "react";
+import "./index.css";
+import App from "./App";
+import { store } from "./store";
+import { Provider } from "react-redux";
+import * as serviceWorker from "./serviceWorker";
+import { createRoot } from "react-dom/client";
 
-const container = document.getElementById('root') as Element | DocumentFragment;
+const container = document.getElementById("root") as Element | DocumentFragment;
 const root = createRoot(container);
 root.render(
   <React.StrictMode>

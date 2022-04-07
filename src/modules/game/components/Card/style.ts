@@ -1,6 +1,6 @@
-import { LEVELS } from 'modules/game/types';
-import styled, { css } from 'styled-components';
-import { getRandomDegree } from 'utils';
+import { LEVELS } from "modules/game/types";
+import styled, { css } from "styled-components";
+import { getRandomDegree } from "utils";
 
 export const CARD_DIMENSION = 200;
 export const CARD_MARGIN = 10;
@@ -84,7 +84,7 @@ export const CardImg = styled.img<{
     selectedGameLevel !== LEVELS.EASY &&
     css`
       transform: rotate(
-        ${selectedGameLevel === LEVELS.MEDIUM ? '90' : getRandomDegree(idNr)}deg
+        ${selectedGameLevel === LEVELS.MEDIUM ? "90" : getRandomDegree(idNr)}deg
       );
     `}
 `;

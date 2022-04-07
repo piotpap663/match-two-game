@@ -1,6 +1,6 @@
-import { Route, Routes } from 'react-router-dom';
-import { Game } from 'modules/game/Game';
-import { About } from 'modules/about/About';
+import { Route, Routes } from "react-router-dom";
+import { Game } from "modules/game/Game";
+import { About } from "modules/about/About";
 
 export const AppRoutes = () => {
   return (

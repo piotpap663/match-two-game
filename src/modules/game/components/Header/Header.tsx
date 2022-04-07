@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useStopwatch } from 'react-timer-hook';
-import { selectGameStatus } from '../../selectors';
-import { GAME_STATUS } from '../../types';
-import { HeaderWrapper, HeaderTitle } from './style';
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useStopwatch } from "react-timer-hook";
+import { selectGameStatus } from "../../selectors";
+import { GAME_STATUS } from "../../types";
+import { HeaderWrapper, HeaderTitle } from "./style";
 
 export const Header = () => {
   const { seconds, minutes, hours, pause, reset } = useStopwatch({
@@ -24,7 +24,7 @@ export const Header = () => {
   return isPlaying === GAME_STATUS.IDLE ? null : (
     <HeaderWrapper data-testid="game-header">
       {isPlaying === GAME_STATUS.FINISHED && (
-        <HeaderTitle>{'Your result: '}</HeaderTitle>
+        <HeaderTitle>{"Your result: "}</HeaderTitle>
       )}
       {hours < 10 ? `0${hours}` : hours}:
       {minutes < 10 ? `0${minutes}` : minutes}:

@@ -1,6 +1,6 @@
-import { CardWrapper, CardImg } from './style';
-import emptyImg from 'assets/images/wall.jpg';
-import { LEVELS } from 'modules/game/types';
+import { CardWrapper, CardImg } from "./style";
+import emptyImg from "assets/images/wall.jpg";
+import { LEVELS } from "modules/game/types";
 
 interface CardProps {
   id: number;

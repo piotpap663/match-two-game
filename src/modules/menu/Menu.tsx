@@ -1,4 +1,4 @@
-import { MenuNav, MenuBox, MenuLink } from './style';
+import { MenuNav, MenuBox, MenuLink } from "./style";
 
 export const Menu = () => {
   return (

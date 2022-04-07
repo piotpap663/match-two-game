@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { startGame, setDimensions, setGameLevel } from '../../gameSlice';
-import { selectDimensions, selectGameLevel } from '../../selectors';
-import { DIMENSIONS, LEVELS } from '../../types';
+import { useDispatch, useSelector } from "react-redux";
+import { startGame, setDimensions, setGameLevel } from "../../gameSlice";
+import { selectDimensions, selectGameLevel } from "../../selectors";
+import { DIMENSIONS, LEVELS } from "../../types";
 import {
   ButtonContainer,
   DimensionLabel,
@@ -11,7 +11,7 @@ import {
   SelectorContainers,
   StartButton,
   StartGameWrapper,
-} from './style';
+} from "./style";
 
 export const StartGame = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ export const StartGame = () => {
     <StartGameWrapper data-testid="startgame">
       <SelectorContainers>
         <SelectorContainer>
-          <DimensionLabel htmlFor={'dimensions'}>Choose size:</DimensionLabel>
+          <DimensionLabel htmlFor={"dimensions"}>Choose size:</DimensionLabel>
           <SelectDimension
             value={selectedGameDimensions}
             name="dimension"
@@ -51,7 +51,7 @@ export const StartGame = () => {
         </SelectorContainer>
 
         <SelectorContainer>
-          <DimensionLabel htmlFor={'level'}>Choose level:</DimensionLabel>
+          <DimensionLabel htmlFor={"level"}>Choose level:</DimensionLabel>
           <SelectDimension
             value={selectedGameLevel}
             name="level"

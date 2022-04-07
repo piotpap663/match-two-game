@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addHiddenId, setGameStatus } from '../../gameSlice';
-import { selectGameLevel, selectHiddenIds } from '../../selectors';
-import { GAME_STATUS } from '../../types';
-import { Card } from '../Card/Card';
-import { CardsWrapper } from './style';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addHiddenId, setGameStatus } from "../../gameSlice";
+import { selectGameLevel, selectHiddenIds } from "../../selectors";
+import { GAME_STATUS } from "../../types";
+import { Card } from "../Card/Card";
+import { CardsWrapper } from "./style";
 
 interface CardsProps {
   cardsAmount: number;

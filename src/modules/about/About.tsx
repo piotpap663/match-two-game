@@ -1,4 +1,4 @@
-import { AboutWrapper } from './style';
+import { AboutWrapper } from "./style";
 
 export const About = () => {
   return (

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { CARD_MARGIN, CARD_DIMENSION } from '../Card/style';
+import styled from "styled-components";
+import { CARD_MARGIN, CARD_DIMENSION } from "../Card/style";
 
 export const CardsWrapper = styled.div<{ cardsAmount: number }>`
   display: flex;

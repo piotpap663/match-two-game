@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DIMENSIONS, GameSlice, GAME_STATUS, LEVELS } from './types';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { DIMENSIONS, GameSlice, GAME_STATUS, LEVELS } from "./types";
 
 const initialState: GameSlice = {
   hiddenIds: [],
@@ -9,7 +9,7 @@ const initialState: GameSlice = {
 };
 
 export const gameSlice = createSlice({
-  name: 'game',
+  name: "game",
   initialState,
   reducers: {
     addHiddenId: (state, action: PayloadAction<number>) => {
