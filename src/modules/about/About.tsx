@@ -3,9 +3,7 @@ import { AboutWrapper } from './style';
 export const About = () => {
   return (
     <AboutWrapper data-testid="about">
-      Look for pairs of cards by turning them over in turns, 2 at a time. If you
-      find a match, you get a point - and you may turn over 2 more cards.
-      Whoever finds more matches wins.
+      Hide all cards – and reveal two at a time from user click. Are you ready ?
     </AboutWrapper>
   );
 };

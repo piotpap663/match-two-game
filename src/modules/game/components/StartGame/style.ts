@@ -5,9 +5,21 @@ export const StartGameWrapper = styled.div`
   font-size: 1em;
 `;
 
-export const SelectorContainer = styled.div``;
+export const SelectorContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  align-items: center;
+`;
+export const SelectorContainers = styled.div`
+  width: 275px;
+  text-align: left;
+  margin: 0 auto;
+`;
 export const SelectDimension = styled.select`
   font-size: 1em;
+  width: 140px;
+  padding: 4px;
 `;
 export const DimensionLabel = styled.label`
   margin-right: 10px;

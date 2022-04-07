@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DIMENSIONS, GameSlice, GAME_STATUS } from './types';
+import { DIMENSIONS, GameSlice, GAME_STATUS, LEVELS } from './types';
 
 const initialState: GameSlice = {
   hiddenIds: [],
   status: GAME_STATUS.IDLE,
   dimensions: DIMENSIONS._4X4,
+  level: LEVELS.EASY,
 };
 
 export const gameSlice = createSlice({
@@ -19,6 +20,9 @@ export const gameSlice = createSlice({
     },
     setGameStatus: (state, action: PayloadAction<GAME_STATUS>) => {
       state.status = action.payload;
+    },
+    setGameLevel: (state, action: PayloadAction<LEVELS>) => {
+      state.level = action.payload;
     },
     setDimensions: (state, action: PayloadAction<DIMENSIONS>) => {
       state.dimensions = action.payload;
@@ -38,6 +42,7 @@ export const {
   resetHiddenIds,
   addHiddenId,
   setGameStatus,
+  setGameLevel,
   setDimensions,
   startGame,
   restartGame,

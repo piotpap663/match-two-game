@@ -1,4 +1,7 @@
+import { LEVELS } from 'modules/game/types';
 import styled, { css } from 'styled-components';
+import { getRandomDegree } from 'utils';
+
 export const CARD_DIMENSION = 200;
 export const CARD_MARGIN = 10;
 
@@ -57,11 +60,16 @@ export const CardWrapper = styled.div<{
   }
 `;
 
-export const CardImg = styled.img<{ turnedOff: boolean }>`
+export const CardImg = styled.img<{
+  turnedOff: boolean;
+  selectedGameLevel: LEVELS;
+  flipped: boolean;
+  idNr: number;
+}>`
   width: 100%;
   height: 100%;
-  box-shadow: 0px 0px 24px -5px rgba(66, 68, 90, 1);
 
+  box-shadow: 0px 0px 24px -5px rgba(66, 68, 90, 1);
   border-radius: 3px;
 
   ${({ turnedOff }) =>
@@ -69,5 +77,14 @@ export const CardImg = styled.img<{ turnedOff: boolean }>`
     css`
       transition: opacity 0.5s;
       opacity: 0;
+    `}
+
+  ${({ selectedGameLevel, flipped, idNr }) =>
+    flipped &&
+    selectedGameLevel !== LEVELS.EASY &&
+    css`
+      transform: rotate(
+        ${selectedGameLevel === LEVELS.MEDIUM ? '90' : getRandomDegree(idNr)}deg
+      );
     `}
 `;

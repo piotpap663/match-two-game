@@ -1,5 +1,6 @@
 import { CardWrapper, CardImg } from './style';
 import emptyImg from 'assets/images/wall.jpg';
+import { LEVELS } from 'modules/game/types';
 
 interface CardProps {
   id: number;
@@ -7,6 +8,7 @@ interface CardProps {
   flipped: boolean;
   onClick: () => void;
   cardsAmount: number;
+  selectedGameLevel: LEVELS;
 }
 export const Card = ({
   id,
@@ -14,6 +16,7 @@ export const Card = ({
   onClick,
   flipped,
   cardsAmount,
+  selectedGameLevel,
 }: CardProps) => (
   <CardWrapper
     turnedOff={turnedOff}
@@ -22,8 +25,12 @@ export const Card = ({
     cardsAmount={cardsAmount}
   >
     <CardImg
+      data-testid="card-image"
+      selectedGameLevel={selectedGameLevel}
       turnedOff={turnedOff}
+      flipped={flipped}
       src={flipped ? require(`assets/images/${id}.jpg`) : emptyImg}
+      idNr={id}
     ></CardImg>
   </CardWrapper>
 );

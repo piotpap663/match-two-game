@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addHiddenId, setGameStatus } from '../../gameSlice';
-import { selectHiddenIds } from '../../selectors';
+import { selectGameLevel, selectHiddenIds } from '../../selectors';
 import { GAME_STATUS } from '../../types';
 import { Card } from '../Card/Card';
 import { CardsWrapper } from './style';
@@ -14,6 +14,7 @@ export const Cards = ({ cardsAmount, cardsList }: CardsProps) => {
   const dispatch = useDispatch();
 
   const hiddenIds = useSelector(selectHiddenIds);
+  const selectedGameLevel = useSelector(selectGameLevel);
 
   const [flippedIds, setFlippedIds] = useState<number[]>([]);
 
@@ -49,6 +50,7 @@ export const Cards = ({ cardsAmount, cardsList }: CardsProps) => {
           turnedOff={hiddenIds.includes(card)}
           flipped={flippedIds.includes(cardIdx)}
           cardsAmount={cardsAmount}
+          selectedGameLevel={selectedGameLevel}
         />
       ))}
     </CardsWrapper>
